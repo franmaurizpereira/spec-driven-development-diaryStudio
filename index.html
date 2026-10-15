@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diario de Estudio</title>
+  <link rel="stylesheet" href="styles.css?v=8">
+</head>
+<body>
+  <main class="contenedor">
+    <header class="cabecera">
+      <h1>Diario de Estudio</h1>
+      <p class="subtitulo">Anota cada día y mantén la racha.</p>
+    </header>
+
+    <section class="hero">
+      <h2>Racha actual</h2>
+      <p class="racha-numero">🔥 <span id="racha">0</span> <span class="racha-dias">días</span></p>
+      <div class="hero-datos">
+        <p class="hero-dato">Mejor racha: 🏆 <span id="mejor-racha">0</span> días</p>
+        <p class="hero-dato">Esta semana: ⏱️ <span id="minutos-semana">0</span> minutos</p>
+      </div>
+
+      <div class="objetivo">
+        <h3 class="objetivo-titulo">Objetivo semanal</h3>
+
+        <p id="mensaje-objetivo">Fija un objetivo semanal para medir tu progreso.</p>
+
+        <p id="progreso-objetivo" class="objetivo-progreso"></p>
+        <p id="porcentaje-objetivo" class="objetivo-porcentaje"></p>
+
+        <div id="barra-objetivo" class="barra" aria-hidden="true" hidden>
+          <div id="barra-objetivo-relleno" class="barra-relleno"></div>
+        </div>
+
+        <form id="form-objetivo" novalidate>
+          <label for="objetivo-minutos">Minutos a la semana</label>
+          <input type="number" id="objetivo-minutos" name="objetivo-minutos" min="1" step="1" placeholder="Ej: 120" required>
+          <button type="submit">Guardar objetivo</button>
+        </form>
+
+        <p id="error-objetivo" class="error" aria-live="polite" hidden></p>
+
+        <button type="button" id="quitar-objetivo" hidden>Quitar objetivo</button>
+      </div>
+    </section>
+
+    <section class="mapa">
+      <h2>Mapa de calor</h2>
+      <p class="mapa-ayuda">Últimas 8 semanas. Más minutos, color más intenso.</p>
+      <div id="mapa-dias" class="mapa-dias" role="group" aria-label="Días estudiados por semana"></div>
+      <p id="detalle-dia" class="detalle-dia" aria-live="polite">Pulsa un día para ver el detalle.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Nueva sesión</h2>
+      <form id="form-sesion">
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" name="fecha" required>
+
+        <label for="tema">Tema</label>
+        <input type="text" id="tema" name="tema" placeholder="¿Qué estudiaste?" required>
+
+        <label for="minutos">Minutos</label>
+        <input type="number" id="minutos" name="minutos" min="1" step="1" placeholder="Ej: 30" required>
+
+        <p id="error-formulario" class="error" aria-live="polite" hidden></p>
+        <button type="submit">Guardar sesión</button>
+      </form>
+    </section>
+
+    <section class="lista">
+      <h2>Mis sesiones</h2>
+      <p id="mensaje-vacio">Todavía no hay sesiones. ¡Registra la primera!</p>
+      <ul id="lista-sesiones"></ul>
+    </section>
+  </main>
+
+  <script src="app.js?v=8"></script>
+</body>
+</html>

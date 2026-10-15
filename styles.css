@@ -1,0 +1,323 @@
+/* Diario de Estudio: tinta pizarra + papel frío, un héroe oscuro y resto tranquilo */
+:root {
+  --papel: #edf1f5;
+  --blanco: #ffffff;
+  --tinta: #223041;
+  --tinta-suave: #5b6b7f;
+  --linea: #d4dde6;
+  --accion: #155e59;
+  --accion-oscura: #0f4a46;
+  --hero-fondo: #223041;
+  --hero-texto: #f4f6f8;
+  --hero-suave: #c6d2de;
+  --error-texto: #b3261e;
+  --error-fondo: #fdecea;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, Arial, sans-serif;
+  line-height: 1.5;
+  background-color: var(--papel);
+  color: var(--tinta);
+}
+
+.contenedor {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 20px 16px 32px;
+}
+
+/* Cabecera a la izquierda: título serif de cuaderno + frase corta */
+.cabecera h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.6rem;
+  margin: 8px 0 0;
+  text-align: left;
+}
+
+.subtitulo {
+  margin: 4px 0 16px;
+  color: var(--tinta-suave);
+}
+
+/* Héroe: el único bloque oscuro, lo memorable de la página */
+.hero {
+  background-color: var(--hero-fondo);
+  color: var(--hero-texto);
+  border-radius: 18px;
+  padding: 20px 16px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.hero h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.1rem;
+  font-weight: normal;
+  margin: 0;
+  color: var(--hero-suave);
+}
+
+.racha-numero {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 3.4rem;
+  font-weight: bold;
+  margin: 8px 0 12px;
+}
+
+.racha-dias {
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: var(--hero-suave);
+}
+
+.hero-datos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+  justify-content: center;
+}
+
+.hero-dato {
+  margin: 0;
+  color: var(--hero-suave);
+}
+
+.hero-dato span {
+  color: var(--hero-texto);
+  font-weight: bold;
+}
+
+/* Objetivo semanal dentro del hero */
+.objetivo {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.objetivo-titulo {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.1rem;
+  font-weight: normal;
+  margin: 0 0 10px;
+  color: var(--hero-suave);
+}
+
+/* Mensaje del estado vacío: "Fija un objetivo semanal..." */
+#mensaje-objetivo {
+  margin: 0 0 10px;
+  color: var(--hero-suave);
+}
+
+/* Progreso "X / Y minutos": lo más destacado del bloque */
+.objetivo-progreso {
+  margin: 0;
+  color: var(--hero-texto);
+  font-weight: bold;
+}
+
+/* Porcentaje "NN %" y mensaje de cumplido */
+.objetivo-porcentaje {
+  margin: 2px 0 10px;
+  color: var(--hero-suave);
+}
+
+/* Barra de progreso: pista semitransparente y relleno claro */
+.barra {
+  width: 100%;
+  height: 12px;
+  margin: 0 0 12px;
+  background-color: rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.barra-relleno {
+  width: 0;
+  height: 100%;
+  background-color: #93d1ba;
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+/* El input del objetivo va sobre el hero oscuro: texto oscuro para leerse */
+.objetivo input {
+  color: var(--tinta);
+}
+
+/* Botón secundario "Quitar objetivo" sobre el hero */
+#quitar-objetivo {
+  background-color: transparent;
+  color: var(--hero-suave);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+#quitar-objetivo:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--hero-texto);
+}
+
+/* Formulario: tarjeta blanca con borde fino, sin sombras */
+.panel {
+  background: var(--blanco);
+  border: 1px solid var(--linea);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.panel h2,
+.mapa h2,
+.lista h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.15rem;
+  margin: 0 0 8px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+input {
+  padding: 10px;
+  font-size: 1rem;
+  color: inherit;
+  background-color: var(--blanco);
+  border: 1px solid var(--linea);
+  border-radius: 8px;
+}
+
+input:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--accion);
+  outline-offset: 2px;
+}
+
+button {
+  margin-top: 12px;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: var(--accion);
+  color: var(--blanco);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--accion-oscura);
+}
+
+/* Lista sin tarjeta: solo líneas, para no repetir el mismo módulo */
+.lista {
+  padding: 4px 2px;
+}
+
+.lista p {
+  color: var(--tinta-suave);
+}
+
+/* Mapa de calor: 8 columnas (semanas) x 7 filas (lunes a domingo) */
+.mapa {
+  padding: 4px 2px;
+  margin-bottom: 16px;
+}
+
+.mapa-ayuda {
+  margin: 0 0 8px;
+  color: var(--tinta-suave);
+  font-size: 0.9rem;
+}
+
+.mapa-dias {
+  display: grid;
+  grid-template-rows: repeat(7, 13px);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  gap: 4px;
+}
+
+.dia {
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  min-height: 0;
+  background-color: var(--blanco);
+  border: 1px solid var(--linea);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.dia.nivel-1 {
+  background-color: #cde9de;
+}
+
+.dia.nivel-2 {
+  background-color: #93d1ba;
+}
+
+.dia.nivel-3 {
+  background-color: #4da88e;
+}
+
+.dia.nivel-4 {
+  background-color: var(--accion);
+}
+
+.dia.futura {
+  background-color: transparent;
+  border-style: dashed;
+  cursor: default;
+  opacity: 0.5;
+}
+
+.dia.futura:hover {
+  background-color: transparent;
+}
+
+.detalle-dia {
+  margin: 8px 0 0;
+  color: var(--tinta-suave);
+}
+
+#lista-sesiones {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#lista-sesiones li {
+  border-top: 1px solid var(--linea);
+  padding: 10px 0;
+}
+
+.error {
+  margin: 8px 0 0;
+  padding: 10px;
+  color: var(--error-texto);
+  background-color: var(--error-fondo);
+  border-radius: 8px;
+}
+
+[hidden] {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none;
+  }
+}
